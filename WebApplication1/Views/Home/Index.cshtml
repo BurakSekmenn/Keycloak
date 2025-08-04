@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="welcome-section">
+                            <h2 class="card-title text-primary mb-4">
+                                <i class="fas fa-user-circle me-2"></i>
+                                Hoş Geldiniz
+                            </h2>
+                            <p class="lead mb-4">
+                                Merhaba <strong>@User.Identity.Name</strong>!
+                            </p>
+                            <p class="text-muted mb-4">
+                                Sisteme başarıyla giriş yaptınız. İstediğiniz işlemleri gerçekleştirebilirsiniz.
+                            </p>
+                            <a asp-controller="Home" asp-action="Logout" class="btn btn-outline-danger btn-lg">
+                                <i class="fas fa-sign-out-alt me-2"></i>
+                                Çıkış Yap
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="login-section">
+                            <h2 class="card-title text-primary mb-4">
+                                <i class="fas fa-home me-2"></i>
+                                Hoş Geldiniz
+                            </h2>
+                            <p class="lead mb-4">
+                                Uygulamaya erişim için lütfen giriş yapınız.
+                            </p>
+                            <a asp-controller="Home" asp-action="Login" class="btn btn-primary btn-lg">
+                                <i class="fas fa-sign-in-alt me-2"></i>
+                                Giriş Yap
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .welcome-section, .login-section {
+        padding: 2rem 0;
+    }
+    
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+    
+    .btn-lg {
+        padding: 12px 30px;
+        border-radius: 25px;
+        font-weight: 500;
+    }
+    
+    .text-primary {
+        color: #0d6efd !important;
+    }
+    
+    .lead {
+        font-size: 1.1rem;
+        font-weight: 300;
+    }
+</style>
